@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "nuxt-ts",
-    "build": "nuxt-ts build",
+    "build": "nuxt-ts generate",
     "start": "nuxt-ts start",
     "generate": "nuxt-ts generate",
     "test": "jest"
@@ -13,12 +13,9 @@
     "@nuxt/typescript-runtime": "^2.0.0",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/pwa": "^3.0.2",
-    "@nuxtjs/svg": "^0.1.12",
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
-    "nuxt-svg-loader": "^1.2.0",
-    "vue-infinite-scroll": "^2.0.2",
-    "vue-social-sharing": "^3.0.4"
+    "vue-infinite-scroll": "^2.0.2"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.6",
