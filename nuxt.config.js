@@ -53,9 +53,6 @@ export default {
   build: {
     // vendor: ['vue-infinite-scroll']
   },
-  generate: {
-    dir: 'public'
-  },
   env: {
     apiURL: 'https://api-vercel.hitamcoklat.vercel.app'
   }
