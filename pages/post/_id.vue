@@ -23,7 +23,7 @@
                     >
                         <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
                     </svg>
-                    <p class="ml-5 text-base font-medium dark:text-white text-xl">@{{ dataPost.username }}</p>
+                    <p class="ml-5 font-medium dark:text-white text-xl">@{{ dataPost.username }}</p>
                 </div>
             </div>
             <div class="mt-2">
@@ -57,6 +57,7 @@
             description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
             quote="The hot reload is so fast it\'s near instant. - Evan You"
             hashtags="vuejs,vite"
+            class="dark:text-white"
         >
             Share on Facebook
         </ShareNetwork>
@@ -64,6 +65,7 @@
             <div class="max-w-xl mx-auto transition delay-150 duration-300 ease-in-out px-4 py-4 dark:bg-gray-800 dark:bg-opacity-50 bg-white shadow-md rounded-lg">
                 <a :href="linkAuthor" class="truncate pr-10 dark:text-white">Sumber : {{linkAuthor.substr(0, 28)}}...</a>
             </div>
+            <Komentar :idPost="idPost" />
             <div class="max-w-xl mt-5 mx-auto transition delay-150 duration-300 ease-in-out px-4 py-4 dark:bg-gray-800 dark:bg-opacity-50 bg-white shadow-md rounded-lg">
                 <p class="dark:text-white text-center">Kisah. Merupakan sebuah platform baca, berasal dari kumpulan2 artikel/tulisan yang ada di internet dan dikumpulkan dengan metoda scrapping. </p>
             </div>                   
@@ -75,6 +77,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import NavBar from '@/components/CardKisah.vue'
+import Komentar from '@/components/Komentar.vue'
 import ToggleLight from '@/components/ToggleLight.vue'
 import LoveIcon from '@/assets/icons/love.svg'
 import CommentIcon from '@/assets/icons/comment.svg'
@@ -88,6 +91,7 @@ export default Vue.extend({
       dataPost: [],
       txtHeadline: '',
       linkAuthor: '',
+      idPost: '',
       likeCount: 0,
       loading: true
     }
@@ -120,6 +124,7 @@ export default Vue.extend({
   },
 
   created() {
+    this.idPost = this.$route.params.id
     this.fetchPost(this.$route.params.id)
   }
 

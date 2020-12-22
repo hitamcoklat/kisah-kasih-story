@@ -1,5 +1,5 @@
 export default {
-  // ssr: false, // Disable Server Side rendering
+  ssr: false, // Disable Server Side rendering
   telemetry: false,
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
