@@ -1,6 +1,7 @@
 <template>
 <div class="grid grid-cols-1 max-w-xl gap-6 px-4 mx-auto md:px-6 lg:px-8">
   <NavBar />
+  <BannerInfo />
   <CardKisah @loadStatus="onLoadStatus" />
   <ToggleLight v-if="loading == false" />
 </div>
@@ -27,6 +28,7 @@ import Vue from 'vue'
 import CardKisah from '@/components/CardKisah.vue'
 import NavBar from '@/components/CardKisah.vue'
 import ToggleLight from '@/components/ToggleLight.vue'
+import BannerInfo from '@/components/BannerInfo.vue'
 
 export default Vue.extend({
 

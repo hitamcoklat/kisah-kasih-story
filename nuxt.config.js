@@ -9,8 +9,8 @@ export default {
     title: 'Kisah',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' },
+      { hid: 'description', name: 'description', content: 'Kisah. Merupakan sebuah platform baca, berasal dari kumpulan2 artikel/tulisan yang ada di internet dan dikumpulkan dengan metoda scrapping.' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }

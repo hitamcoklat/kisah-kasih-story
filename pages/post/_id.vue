@@ -65,10 +65,10 @@
                 <a :href="linkAuthor" class="truncate pr-10 dark:text-white">Sumber : {{linkAuthor.substr(0, 28)}}...</a>
             </div>
             <div class="max-w-xl mt-5 mx-auto transition delay-150 duration-300 ease-in-out px-4 py-4 dark:bg-gray-800 dark:bg-opacity-50 bg-white shadow-md rounded-lg">
-                <p class="dark:text-white">Kisah. merupakan sebuah akjsd hkjash dkjahskjdh aksjdh kasjhd kjas hdk</p>
+                <p class="dark:text-white text-center">Kisah. Merupakan sebuah platform baca, berasal dari kumpulan2 artikel/tulisan yang ada di internet dan dikumpulkan dengan metoda scrapping. </p>
             </div>                   
-            <ToggleLight />
         </div>
+        <ToggleLight v-if="loading == false" />
     </div>
 </template>
 
@@ -120,7 +120,6 @@ export default Vue.extend({
   },
 
   created() {
-    console.log(this.$route.params.id)
     this.fetchPost(this.$route.params.id)
   }
 
