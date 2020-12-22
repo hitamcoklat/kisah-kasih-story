@@ -36,10 +36,16 @@ export default Vue.extend({
     }
   },
 
+  computed: {
+      btnLabel() {
+          return this.$colorMode.preference === 'light' ? 'dark' : 'light'
+      }
+  },  
+
   methods: {
     toggle: function() {
       this.$colorMode.preference =
-         this.$colorMode.value == "light" ? "dark" : "light";
+         this.$colorMode.preference == "light" ? "dark" : "light";
       
       this.txtMode = (this.$colorMode.value == "light") ? 'Mode Terang' : 'Mode Gelap'
     },
