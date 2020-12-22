@@ -34,8 +34,7 @@ export default {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/color-mode',
-    'nuxt-svg-loader'
+    '@nuxtjs/color-mode'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -44,6 +43,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    'nuxt-svg-loader',
     'vue-social-sharing/nuxt'
   ],
 
