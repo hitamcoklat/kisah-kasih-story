@@ -25,7 +25,10 @@
                             <LoveIcon class="_8-yf5 fill-current dark:text-white" />  
                             <span class="ml-2 dark:text-white">{{ item.likes || 0 }}</span>
                         </button>
-                        <CommentCount :idPost="item._id" />                        
+                        <button class="flex flex-row items-center focus:outline-none focus:shadow-outline rounded-lg ml-3">
+                            <CommentIcon class="_8-yf5 fill-current dark:text-white" />
+                            <span class="ml-2 dark:text-white">{{ item.commentCount || 0 }}</span>  
+                        </button>                        
                         <button class="flex flex-row items-center focus:outline-none focus:shadow-outline rounded-lg ml-3">
                             <ShareIcon class="_8-yf5 fill-current dark:text-white" />
                         <span class="ml-2 dark:text-white">0</span>

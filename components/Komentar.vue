@@ -10,7 +10,7 @@
         <div class="mt-5">            
             <p v-for="(item, index) in dataComment" :key="index" class="w-full p-5 shadow-md rounded border-1 border-gray-400 dark:text-white">
                 <strong>{{item.author}}</strong><br />
-                <span class="font-thin text-xs italic">{{ item.time }}</span><br />
+                <span class="font-thin text-xs italic">{{ new Date(item.time).toGMTString() }}</span><br />
                 {{ item.description }}
             </p>
             <!-- <p @click="loadMore" v-if="loadMoreStatus == true" class="cursor-pointer uppercase rounded px-8 mt-2 py-5 w-full dark:text-white text-center font-bold">Load More</p> -->
