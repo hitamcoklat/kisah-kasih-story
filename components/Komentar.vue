@@ -64,8 +64,10 @@ export default Vue.extend({
         async fetchData() {
             this.loading = true
             const res = await this.$axios.get(process.env.apiURL + '/comment/read/' + this.idPost)
-            this.dataComment = res.data.data.data.reverse()
-            this.jmlComment = JSON.parse(JSON.stringify(res.data.data.data)).length
+            if(res.data.status == true) {
+                this.dataComment = res.data.data.data.reverse()
+                this.jmlComment = JSON.parse(JSON.stringify(res.data.data.data)).length
+            }
             this.loading = false
         },        
     },
