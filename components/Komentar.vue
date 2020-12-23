@@ -6,14 +6,14 @@
             <p v-if="loading" class="uppercase rounded px-8 mt-2 py-2 bg-green-600 text-blue-50 w-full shadow-sm hover:shadow-md text-center">Loading...</p>
             <button v-if="loading == false" @click="sendComment" class="uppercase rounded px-8 mt-2 py-2 bg-green-600 text-blue-50 w-full shadow-sm hover:shadow-md">Kirim Komentar</button>
         </div>            
-        <p class="dark:text-white mt-4">Komentar Netizen:</p>
+        <p class="dark:text-white mt-4">{{ jmlComment }} Komentar Netizen:</p>
         <div class="mt-5">            
             <p v-for="(item, index) in dataComment" :key="index" class="w-full p-5 shadow-md rounded border-1 border-gray-400 dark:text-white">
                 <strong>{{item.author}}</strong><br />
-                <span class="font-thin text-xs italic">{{ new Date(item.createdAt) }}</span><br />
+                <span class="font-thin text-xs italic">{{ item.time }}</span><br />
                 {{ item.description }}
             </p>
-            <p @click="loadMore" v-if="loadMoreStatus == true" class="cursor-pointer uppercase rounded px-8 mt-2 py-5 w-full dark:text-white text-center font-bold">Load More</p>
+            <!-- <p @click="loadMore" v-if="loadMoreStatus == true" class="cursor-pointer uppercase rounded px-8 mt-2 py-5 w-full dark:text-white text-center font-bold">Load More</p> -->
         </div>            
     </div>    
 </template>
@@ -28,12 +28,14 @@ export default Vue.extend({
             loading: boolean,
             loadMoreStatus: boolean,
             page: number,
+            jmlComment: number,
             dataComment: any[]          
         } = {
             description: '',
             loading: false,
             loadMoreStatus: true,
             page: 1,
+            jmlComment: 0,
             dataComment: []
         }
         return data
@@ -43,6 +45,9 @@ export default Vue.extend({
     },
     methods: {
         async sendComment() {
+            if(this.description == '') {
+                return alert('Mohon isi kolom komentar!')
+            }
             this.loading = true
             let arrayAuthor = ['Aligator', 'Netizen', 'Squirrel', 'Panda', 'Mammals', 'Goldfish', 'Sheep']
             let random:any = arrayAuthor[Math.floor(Math.random() * arrayAuthor.length)];
@@ -59,26 +64,15 @@ export default Vue.extend({
         async fetchData() {
             this.loading = true
             const res = await this.$axios.get(process.env.apiURL + '/comment/read/' + this.idPost)
-            this.dataComment = res.data.data
+            this.dataComment = res.data.data.data.reverse()
+            this.jmlComment = JSON.parse(JSON.stringify(res.data.data.data)).length
             this.loading = false
-        },
-        async loadMore(): Promise<any> {
-            this.loading = true
-            this.page = this.page + 1
-            let getData = await this.$axios.$get(`${process.env.apiURL}/comment/read/${this.idPost}?page=${this.page}`)
-            if(getData.status == false) {
-                this.loadMoreStatus = false
-            }
-            getData.data.forEach((element: any) => {
-                this.dataComment.push(element)
-            });
-            this.loading = false
-        }        
+        },        
     },
 
-    created() {
-        console.log(this.idPost)
-        this.fetchData()
+    async created() {
+        await this.fetchData()
+        this.$emit('emitJmlComment', this.jmlComment);
     }
 
 })

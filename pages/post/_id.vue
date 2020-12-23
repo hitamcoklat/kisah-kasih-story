@@ -35,7 +35,7 @@
                     </button>
                     <button class="flex flex-row items-center focus:outline-none focus:shadow-outline rounded-lg ml-3">
                         <CommentIcon class="_8-yf5 fill-current dark:text-white" />
-                    <span class="ml-2 dark:text-white">0</span>
+                    <span class="ml-2 dark:text-white">{{ jmlComment || 0 }}</span>
                     </button>
                     <button class="flex flex-row items-center focus:outline-none focus:shadow-outline rounded-lg ml-3">
                         <ShareIcon class="_8-yf5 fill-current dark:text-white" />
@@ -65,7 +65,7 @@
             <div class="max-w-xl mx-auto transition delay-150 duration-300 ease-in-out px-4 py-4 dark:bg-gray-800 dark:bg-opacity-50 bg-white shadow-md rounded-lg">
                 <a :href="linkAuthor" class="truncate pr-10 dark:text-white">Sumber : {{linkAuthor.substr(0, 28)}}...</a>
             </div>
-            <Komentar :idPost="idPost" />
+            <Komentar @emitJmlComment="emitJmlComment" :idPost="idPost" />
             <div class="max-w-xl mt-5 mx-auto transition delay-150 duration-300 ease-in-out px-4 py-4 dark:bg-gray-800 dark:bg-opacity-50 bg-white shadow-md rounded-lg">
                 <p class="dark:text-white text-center">Kisah. Merupakan sebuah platform baca, berasal dari kumpulan2 artikel/tulisan yang ada di internet dan dikumpulkan dengan metoda scrapping. </p>
             </div>                   
@@ -93,6 +93,7 @@ export default Vue.extend({
       linkAuthor: '',
       idPost: '',
       likeCount: 0,
+      jmlComment: 0,
       loading: true
     }
   },
@@ -120,6 +121,10 @@ export default Vue.extend({
     toggle: function() {
       this.$colorMode.preference =
          this.$colorMode.value == "light" ? "dark" : "light";
+    },
+    emitJmlComment: function(value: number) {
+        console.log(value)
+        this.jmlComment = value
     }
   },
 
