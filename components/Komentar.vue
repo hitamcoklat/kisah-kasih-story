@@ -57,11 +57,11 @@ export default Vue.extend({
                 author: random,
                 description: this.description,
                 idPost: this.idPost,
-                csrfToken: this.csrfToken
+                _csrf: this.csrfToken
             }
             console.log(dataKirim)
             const res = await this.$axios.create({withCredentials: true}).post(process.env.apiURL + '/comment/add/', dataKirim, {
-                headers: { 'X-CSRFTOKEN': this.csrfToken }
+                headers: { 'X-CSRF-TOKEN': this.csrfToken }
             })
             if(res.data.status == false) {
                 alert(res.data.msg)
