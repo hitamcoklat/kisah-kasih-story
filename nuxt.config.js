@@ -55,7 +55,8 @@ export default {
     // vendor: ['vue-infinite-scroll']
   },
   env: {
-    apiURL: 'https://api-vercel.hitamcoklat.vercel.app'
+    apiURL: 'https://api-vercel.hitamcoklat.vercel.app',
+    // apiURL: 'http://localhost:9999',
   },
 
   pwa: {

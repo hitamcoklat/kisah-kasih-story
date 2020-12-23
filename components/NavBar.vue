@@ -17,8 +17,8 @@
 
       </button>
     </div>
-    <div v-if="showModal" class="overflow-x-hidden w-xl overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
-      <div class="relative mx-auto w-xl">
+    <div v-if="showModal" class="overflow-x-hidden md:w-6/12 mx-auto sm:w-full overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+      <div class="relative w-full">
         <!--content-->
         <div class="border-0 shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
           <!--header-->

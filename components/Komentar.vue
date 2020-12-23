@@ -29,14 +29,16 @@ export default Vue.extend({
             loadMoreStatus: boolean,
             page: number,
             jmlComment: number,
-            dataComment: any[]          
+            dataComment: any[],
+            csrfToken: string      
         } = {
             description: '',
             loading: false,
             loadMoreStatus: true,
             page: 1,
             jmlComment: 0,
-            dataComment: []
+            dataComment: [],
+            csrfToken: ''
         }
         return data
     },
@@ -54,20 +56,28 @@ export default Vue.extend({
             let dataKirim = {
                 author: random,
                 description: this.description,
-                idPost: this.idPost
+                idPost: this.idPost,
+                csrfToken: this.csrfToken
             }
-            const res = await this.$axios.post(process.env.apiURL + '/comment/add/', dataKirim)
+            console.log(dataKirim)
+            const res = await this.$axios.create({withCredentials: true}).post(process.env.apiURL + '/comment/add/', dataKirim, {
+                headers: { 'X-CSRFTOKEN': this.csrfToken }
+            })
+            if(res.data.status == false) {
+                alert(res.data.msg)
+            }
             this.fetchData()
             this.description = ""
             this.loading = false
         },
         async fetchData() {
             this.loading = true
-            const res = await this.$axios.get(process.env.apiURL + '/comment/read/' + this.idPost)
+            const res = await this.$axios.create({withCredentials: true}).get(process.env.apiURL + '/comment/read/' + this.idPost)
             if(res.data.status == true) {
                 this.dataComment = res.data.data.data.reverse()
                 this.jmlComment = JSON.parse(JSON.stringify(res.data.data.data)).length
             }
+            this.csrfToken = res.data.csrfToken
             this.loading = false
         },        
     },
