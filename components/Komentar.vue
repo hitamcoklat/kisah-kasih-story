@@ -60,8 +60,12 @@ export default Vue.extend({
                 _csrf: this.csrfToken
             }
             console.log(dataKirim)
-            const res = await this.$axios.create({withCredentials: true}).post(process.env.apiURL + '/comment/add/', dataKirim, {
-                headers: { 'X-CSRF-TOKEN': this.csrfToken }
+            const res = await this.$axios.create({withCredentials: true})
+                            .post(process.env.apiURL + '/comment/add/', dataKirim, {
+                headers: { 
+                    'X-CSRF-TOKEN': this.csrfToken,
+                    'Access-Control-Allow-Origin' : 'https://kisah.netlify.app'
+                }
             })
             if(res.data.status == false) {
                 alert(res.data.msg)
@@ -72,7 +76,8 @@ export default Vue.extend({
         },
         async fetchData() {
             this.loading = true
-            const res = await this.$axios.create({withCredentials: true}).get(process.env.apiURL + '/comment/read/' + this.idPost)
+            const res = await this.$axios.create({withCredentials: true})
+                            .get(process.env.apiURL + '/comment/read/' + this.idPost)
             if(res.data.status == true) {
                 this.dataComment = res.data.data.data.reverse()
                 this.jmlComment = JSON.parse(JSON.stringify(res.data.data.data)).length
