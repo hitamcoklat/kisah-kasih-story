@@ -61,11 +61,11 @@ export default Vue.extend({
             }
             console.log(dataKirim)
             const res = await this.$axios.create({withCredentials: true})
-                            .post(process.env.apiURL + '/comment/add/', dataKirim, {                            
+                            .post(process.env.apiURL + '/comment/add/', dataKirim, {                                           
                 headers: {
                     'Content-Type': 'application/json', 
                     'X-CSRF-TOKEN': this.csrfToken,
-                    'Access-Control-Allow-Origin' : 'https://kisah.netlify.app'
+                    'Access-Control-Allow-Origin' : '*'
                 }
             })
             if(res.data.status == false) {
