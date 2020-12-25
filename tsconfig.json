@@ -15,6 +15,9 @@
     "noEmit": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
+    "typeRoots": [
+      "./types"
+    ],
     "paths": {
       "~/*": [
         "./*"
