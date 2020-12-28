@@ -20,6 +20,7 @@
     "qs": "^6.9.4",
     "vue-google-login": "^2.0.5",
     "vue-infinite-scroll": "^2.0.2",
+    "vue-slick-carousel": "^1.0.6",
     "vue-social-sharing": "^3.0.4",
     "vuex-persist": "^3.1.3"
   },

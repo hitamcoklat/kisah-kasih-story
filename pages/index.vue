@@ -1,6 +1,10 @@
 <template>
 <div class="grid grid-cols-1 max-w-xl gap-6 px-4 mx-auto md:px-6 lg:px-8">
-  <NavBar />
+  <NavBar />        
+  <Slider />
+  <button @click="buatKisah" class="bg-green-500 mt-5 w-full hover:bg-blue-dark text-white font-bold py-2.5 text-xl px-4 rounded">
+      Buat Kisahmu.
+  </button>     
   <BannerInfo />
   <CardKisah @loadStatus="onLoadStatus" />
   <ToggleLight v-if="loading == false" />
@@ -29,6 +33,7 @@ import CardKisah from '@/components/CardKisah.vue'
 import NavBar from '@/components/CardKisah.vue'
 import ToggleLight from '@/components/ToggleLight.vue'
 import BannerInfo from '@/components/BannerInfo.vue'
+import Slider from '@/components/Slider.vue'
 
 export default Vue.extend({
 
@@ -42,6 +47,9 @@ export default Vue.extend({
     onLoadStatus(value: boolean) {
       this.loading = !value
       console.log('Load Status: ' + value)
+    },
+    buatKisah: function() {
+      this.$router.push('/create')
     }
   },
 

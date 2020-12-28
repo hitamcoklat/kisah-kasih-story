@@ -8,3 +8,4 @@ declare module '*.svg' {
 }
 
 declare module 'vue-google-login';
+declare module 'vue-slick-carousel';
